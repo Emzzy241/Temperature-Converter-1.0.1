@@ -35,7 +35,7 @@ namespace TemperatureConverter.Models
         public double FahrenheitConverterMethod()
         {
 
-            if ((StillConvertingFahrenheitToCelsius < 0) && (ConvertingfahrenheitToCelsius == 0))
+            if ((StillConvertingFahrenheitToCelsius < 0))
             {
                 throw new ArgumentException("Invalid temperature in kelvin");
             }
