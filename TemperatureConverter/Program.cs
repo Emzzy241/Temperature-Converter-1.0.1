@@ -13,15 +13,19 @@ class Program
 
         // My appliction can perform 2 features; one is converting fahrenheit Temperature to celsius and vis a vis(vice-versa)
         // and the other is converting a temperature n Kelvin to celsius and vis a vis(vice-versa)
+        Console.WriteLine();
+        Console.WriteLine();
         Console.WriteLine("Welcome to the Temperature-Converter App made by Dynasty");
         Console.WriteLine("What would you like to do today?");
+        Console.WriteLine();
+        Console.WriteLine();
         Console.WriteLine();
         Console.WriteLine();
         Console.WriteLine("Input 'F' to supply in a fahrenheit temperature and our app converts it to Celsius");
         Console.WriteLine();
         Console.WriteLine("Input 'K' to supply in a Celsius temperature and our app converts it to Fahrenheit");
         Console.WriteLine();
-        Console.WriteLine("Or input 'K' to supply in a Kelvin temperature and our app converts it to Celsius :)");
+        Console.WriteLine("Or input 'C' to supply in a Kelvin temperature and our app converts it to Celsius :)");
         Console.WriteLine();
         Console.WriteLine("Or input 'KK' to supply in a Celsius temperature and our app converts it to Kelvin :)");
 
@@ -58,11 +62,11 @@ class Program
 
             static void ConfirmOrEditKelvin(KelvinToCelsius confirmKel)
             {
-                Console.WriteLine("Please confirm that you enterred the correct value for your triangle");
+                Console.WriteLine("Please confirm that you enterred the correct value for kelvin");
 
                 // here is where I used my getter to get user information on their kelvin value
                 // so they can choose to use my setter to set information on their kelvin value or not
-                Console.WriteLine($"You enterred {confirmKel.ConvertingCelsiusToKelvin} for the kelvin value");
+                Console.WriteLine($"You enterred {confirmKel.StillConvertingKelvinToCelsius} for the kelvin value");
                 Console.WriteLine();
                 Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
                 string userAns = Console.ReadLine().ToUpper();
@@ -85,7 +89,7 @@ class Program
                         // no need to reinstantiate an instnace of my KelvinTOCelsius class, I have a setter property in it that can achieve that for me
                         // saving it up; and I used confirmKel this time around because thats the kelvinToCelsius object I instantiated for this method
                         confirmKel.ConvertingKelvinToCelsius = newKelvinValueInt;
-                        confirmKel.ConvertingCelsiusToKelvin = newCelsiusStandard;
+                        confirmKel.StillConvertingKelvinToCelsius = newCelsiusStandard;
 
 
                         // Now inside our method, we run our method again so it keeps confirming if the kelvin value of my user is correct
@@ -133,7 +137,7 @@ class Program
 
             static void ConvertKelvinValueToCelsius(KelvinToCelsius finalKel)
             {
-                double userKelvinValue = finalKel.ConvertingCelsiusToKelvin;
+                double userKelvinValue = finalKel.StillConvertingKelvinToCelsius;
                 double standardCelsiusValue = finalKel.ConvertingKelvinToCelsius;
 
 
@@ -141,7 +145,7 @@ class Program
 
                 Console.WriteLine("--------------------------------");
                 Console.WriteLine($"Your result is {result}C");
-                // tri.Add(result);
+
 
                 Console.WriteLine("--------------------------------");
                 Console.WriteLine();
@@ -152,7 +156,7 @@ class Program
                 Console.WriteLine();
                 Console.WriteLine("Please enter 'new' to convert a new kelvin temperature, enter 'get' to get all kelvin temperatures you've converted. To exit, enter X.");
                 string userContinue = Console.ReadLine().ToUpper();
-                
+
                 switch (userContinue)
                 {
                     case "NEW":
@@ -166,7 +170,7 @@ class Program
                         Console.WriteLine("Goodbye My dear User");
                         break;
 
-                    
+
                     default:
                         Console.WriteLine("Sorry, I didn't get that; Lets try again");
                         Console.WriteLine();
@@ -185,6 +189,122 @@ class Program
 
 
 
+
+        }
+
+        else if (userStarts == "C")
+        {
+            Console.WriteLine("You selected the option for a conversion of Celsius TO Kelvin");
+            Console.WriteLine("We'll help you convert a Kelvin Temperature into a celsius one");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Please enter in the Celsius value");
+            string celsiusValue = Console.ReadLine();
+
+            int celsiusValueInt = int.Parse(celsiusValue);
+
+            Console.WriteLine(celsiusValueInt);
+
+            double celsiusStandard = 273.15;
+
+            CelsiusToKelvin cel = new CelsiusToKelvin(celsiusValueInt, celsiusStandard);
+
+            // running a method to confirm or edit the value my user enterred for kelvin
+
+            ConfirmOrEditCelsius(cel);
+
+            static void ConfirmOrEditCelsius(CelsiusToKelvin confirmCel)
+            {
+                Console.WriteLine("Please confirm that you enterred the correct value for celsius");
+
+                // here is where I used my getter to get user information on their kelvin value
+                // so they can choose to use my setter to set information on their kelvin value or not
+                Console.WriteLine($"You enterred {confirmCel.StillConvertingCelsiusToKelvin} for the kelvin value");
+                Console.WriteLine();
+                Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
+                string userSecondAns = Console.ReadLine().ToUpper();
+
+                // using a switch-case here
+                switch (userSecondAns)
+                {
+                    case "YES":
+                        Console.WriteLine("Great, Lets move on");
+                        ConvertCelsiusValueToKelvin(confirmCel);
+                        break;
+                    case "NO":
+                        Console.WriteLine("Lets fix up your kelvin value");
+                        Console.WriteLine("Enter a new value for your kelvin temperature");
+                        string newCelsiusValue = Console.ReadLine();
+                        double newCelsiusValueInt = double.Parse(newCelsiusValue);
+
+                        double newKelvinStandard = -273.15;
+                        confirmCel.ConvertingCelsiusToKelvin = newCelsiusValueInt;
+                        confirmCel.StillConvertingCelsiusToKelvin = newKelvinStandard;
+
+
+                        ConfirmOrEditCelsius(confirmCel);
+
+                        break;
+
+                    default:
+                        Console.WriteLine("Sorry I didnt get that");
+                        Main();
+                        break;
+
+                }
+
+
+                // Writing the ConvertCelsiusValueToKelvin() method
+
+                static void ConvertCelsiusValueToKelvin(CelsiusToKelvin finalCel)
+                {
+                    double userCelsiusValue = finalCel.StillConvertingCelsiusToKelvin;
+                    double standardKelvinValue = finalCel.ConvertingCelsiusToKelvin;
+
+                    double celsiusResult = finalCel.CelConverterMethod();
+
+                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine($"Your result is {celsiusResult}K");
+                    Console.WriteLine("--------------------------------");
+
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Yay, your temperature value has been changed from celsius to Kelvin");
+                    Console.WriteLine("What's next?");
+                    Console.WriteLine("Would you like to convert a (new) celsius temperature");
+                    Console.WriteLine();
+                    Console.WriteLine("Please Enter 'new' to convert a new celsius temperature, enter 'get to get all celsius temperatures you've converted. To exit, enter 'X'");
+                    string userContinue2 = Console.ReadLine().ToUpper();
+
+                    switch (userContinue2)
+                    {
+                        case "NEW":
+                            Main();
+                            break;
+
+                        case "GET":
+                            // GetAllConvertedKelvins();
+                            break;
+                        case "X":
+                            Console.WriteLine("Goodbye My dear User");
+                            break;
+
+
+                        default:
+                            Console.WriteLine("Sorry, I didn't get that; Lets try again");
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Main();
+                            break;
+                    }
+
+                }
+
+
+
+
+            }
 
         }
 
