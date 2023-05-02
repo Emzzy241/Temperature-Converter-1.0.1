@@ -86,11 +86,11 @@ namespace TemperatureConverter.Models
 
         // a constructor for my KelvinToCelsius temperature that can take in celsius temperature or kelvin temperature
 
-        public KelvinToCelsius(int kelvinTemperature, double celsiusTemperature)
+        public KelvinToCelsius(int kelvinTemperature, double standardOfKelvinToCelsius)
         {
 
             StillConvertingKelvinToCelsius = kelvinTemperature;
-            ConvertingKelvinToCelsius = celsiusTemperature;
+            ConvertingKelvinToCelsius = standardOfKelvinToCelsius;
             _instances.Add(this); 
             // the last part where I used the built-in "this" keyowrd was to add in my C# lists
             // It is worthy to note that since I now have a getter-setter method(StillConvertingKelvinToCelsius, and ConvertingKelvinToCelsius)
