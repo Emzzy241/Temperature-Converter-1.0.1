@@ -1,9 +1,8 @@
-// This is the class file for the conversion of Fahrenheit to Celsius Temperature
+// This is the class file for the conversion of Fahrenheit to Kelvin Temperature
 
 
-// THIS IS THE FORMAT FOR THIS c# FILE, ALTHOUGH i NEED TO STILL UPDATE IT 
-// using System;
-// using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 
 
 // // a method that takes in a fahrenheit Temperature and converts to celsius temperature
@@ -18,24 +17,24 @@ namespace TemperatureConverter.Models
 
         public double StillConvertingFahrenheitToKelvin { get; set; }
         public double ConvertingfahrenheitToKelvin { get; set; }
-        
 
-//         private static List<FahrenheitToCelsius> _thirdInstances = new List<FahrenheitToCelsius>();
 
-//         public List<FahrenheitToCelsius> ForMyFahrenheitToCelsiusTemperatureList
-//         {
-//             get { return _thirdInstances; }
-//             set { _thirdInstances = value; }
-//         }
+        private static List<FahrenheitToKelvin> _thirdInstances = new List<FahrenheitToKelvin>();
+
+        public List<FahrenheitToKelvin> ForMyFahrenheitToCelsiusTemperatureList
+        {
+            get { return _thirdInstances; }
+            set { _thirdInstances = value; }
+        }
 
 //         // my constructor that helps me to handle the different C# properties I've written
 
-//         public FahrenheitToCelsius(double fahrenheitTemperature, double standardOfFahrenheitoCelsius)
-//         {
-//             StillConvertingFahrenheitToCelsius = fahrenheitTemperature;
-//             ConvertingfahrenheitToCelsius = standardOfFahrenheitoCelsius;
-//             _thirdInstances.Add(this);
-//         }
+        public FahrenheitToKelvin(double fahrenheitTemperature, double standardOfFahrenheitoKelvin)
+        {
+            StillConvertingFahrenheitToKelvin = fahrenheitTemperature;
+            ConvertingfahrenheitToKelvin = standardOfFahrenheitoKelvin;
+            _thirdInstances.Add(this);
+        }
 
 //         public double FahrenheitConverterMethod()
 //         {
