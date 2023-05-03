@@ -8,14 +8,17 @@
 
 // // a method that takes in a fahrenheit Temperature and converts to celsius temperature
 
-// namespace TemperatureConverter.Models
-// {
+namespace TemperatureConverter.Models
+{
 
 
-//     public class FahrenheitToCelsius
-//     {
-//         public double StillConvertingFahrenheitToCelsius { get; set; }
-//         public double ConvertingfahrenheitToCelsius { get; set; }
+    public class FahrenheitToKelvin
+    {
+
+
+        public double StillConvertingFahrenheitToKelvin { get; set; }
+        public double ConvertingfahrenheitToKelvin { get; set; }
+        
 
 //         private static List<FahrenheitToCelsius> _thirdInstances = new List<FahrenheitToCelsius>();
 
@@ -48,8 +51,8 @@
 //         }
 
 
-//     }
+    }
 
 
-// }
+}
 
