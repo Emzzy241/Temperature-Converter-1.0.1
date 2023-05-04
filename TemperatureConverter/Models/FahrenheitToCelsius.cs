@@ -35,12 +35,18 @@ namespace TemperatureConverter.Models
         public double FahrenheitConverterMethod()
         {
 
+            // double realConversion = (ConvertingfahrenheitToCelsius * 1.8) +32;
+
+
+            double realConversion = (ConvertingfahrenheitToCelsius -32)* 1.8;
+
+
             if ((StillConvertingFahrenheitToCelsius < 0))
             {
                 throw new ArgumentException("Invalid temperature in kelvin");
             }
             else{
-                double finalFahrenheitValue = StillConvertingFahrenheitToCelsius;
+                double finalFahrenheitValue = realConversion;
                 return finalFahrenheitValue;
             }
         }

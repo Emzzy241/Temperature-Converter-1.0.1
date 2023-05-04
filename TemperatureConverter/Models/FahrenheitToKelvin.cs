@@ -36,18 +36,19 @@ namespace TemperatureConverter.Models
             _thirdInstances.Add(this);
         }
 
-//         public double FahrenheitConverterMethod()
-//         {
+        public double FahrenheitConverterMethod()
+        {
+            double conversionStandard = ConvertingfahrenheitToKelvin - 32 * 0.56 + 273.15;
 
-//             if ((StillConvertingFahrenheitToCelsius < 0))
-//             {
-//                 throw new ArgumentException("Invalid temperature in kelvin");
-//             }
-//             else{
-//                 double finalFahrenheitValue = StillConvertingFahrenheitToCelsius;
-//                 return finalFahrenheitValue;
-//             }
-//         }
+            if (StillConvertingFahrenheitToKelvin < 0)
+            {
+                throw new ArgumentException("Invalid temperature in kelvin");
+            }
+            else{
+                double finalFahrenheitValue = conversionStandard;
+                return finalFahrenheitValue;
+            }
+        }
 
 
     }
