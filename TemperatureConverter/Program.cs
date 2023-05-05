@@ -21,21 +21,148 @@ class Program
         Console.WriteLine();
         Console.WriteLine();
         Console.WriteLine();
-        Console.WriteLine("Input 'F' to supply in a fahrenheit temperature and our app converts it to Celsius");
+        Console.WriteLine("Input 'FC' to supply in a fahrenheit temperature and our app converts it to Celsius");
         Console.WriteLine();
-        Console.WriteLine("Input 'K' to supply in a Celsius temperature and our app converts it to Fahrenheit");
+        Console.WriteLine("Input 'CF' to supply in a Celsius temperature and our app converts it to Fahrenheit");
         Console.WriteLine();
-        Console.WriteLine("Or input 'C' to supply in a Kelvin temperature and our app converts it to Celsius :)");
+        Console.WriteLine("Input 'KC' to supply in a Kelvin temperature and our app converts it to Celsius");
         Console.WriteLine();
-        Console.WriteLine("Or input 'KK' to supply in a Celsius temperature and our app converts it to Kelvin :)");
+        Console.WriteLine("Or input 'CK' to supply in a Celsius temperature and our app converts it to Kelvin :)");
+        Console.WriteLine();
+        Console.WriteLine("Or input 'KF' to supply in a Kelvin temperature and our app converts it to Fahrenheit :)");
+        Console.WriteLine();
+        Console.WriteLine("Or input 'FK' to supply in a Fahrenheit Temperature and our app converts it to Kelvin :)");
+        Console.WriteLine();
 
         string userStarts = Console.ReadLine().ToUpper();
 
-        if (userStarts == "F")
+        // forFahrenheit to celsius
+        if (userStarts == "FC")
+        {
+            Console.WriteLine("You selected the option for a conversion of Fahrenheit to Celsius");
+            Console.WriteLine("We'll help you convert a fahrenheit Temperature into a Celsius one");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Please enter in the fahrenheit value");
+
+            string fahrenheitValue = Console.ReadLine();
+
+            int fahrenheitValueInt = int.Parse(fahrenheitValue);
+
+            Console.WriteLine(fahrenheitValueInt);
+
+            double celsiusStandard = 273.15;
+
+            FahrenheitToCelsius faht = new FahrenheitToCelsius(fahrenheitValueInt, celsiusStandard);
+
+            // running a method to confirm or edit the value my user enterred for Celsius
+
+            ConfirmOrEditFirstFahrenheit(faht);
+
+            // code for method to confirm or edit fahrenheit value supplied by user.
+
+            static void ConfirmOrEditFirstFahrenheit(FahrenheitToCelsius confirmFaht1)
+            {
+                Console.WriteLine("Please confirm that you enterred the correct value for Fahrenheit");
+
+                Console.WriteLine($"You enterred $'{confirmFaht1.StillConvertingFahrenheitToCelsius}' for the fahrenheit value");
+                Console.WriteLine();
+                Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
+                string userThirdAns = Console.ReadLine().ToUpper();
+
+                // using a switch-case here
+                switch (userThirdAns)
+                {
+                    case "YES":
+                        Console.WriteLine("Great, Lets move on");
+                        ConvertFahrenheitToCelsius(confirmFaht1);
+                        break;
+                    case "NO":
+                        Console.WriteLine("Lets fix up your fahrenheit value");
+                        Console.WriteLine("Enter a new value for your fahrenheit temperature");
+                        string newFaht1Value = Console.ReadLine();
+                        double newFaht1ValueInt = double.Parse(newFaht1Value);
+
+                        double newKFahreheitStandard = 32;
+                        confirmFaht1.ConvertingFahrenheitToCelsius = newFaht1ValueInt;
+                        confirmFaht1.StillConvertingFahrenheitToCelsius = newKFahreheitStandard;
+
+
+                        ConfirmOrEditFirstFahrenheit(confirmFaht1);
+
+                        break;
+
+                    default:
+                        Console.WriteLine("Sorry I didnt get that");
+                        Main();
+                        break;
+
+                }
+
+                // the UI that works with the Fahrenheit to celsius method.
+                // method has already been written in its own business logic file[p]
+
+                static void ConvertFahrenheitToCelsius(FahrenheitToCelsius finalFaht1)
+                {
+                    double userFaht1Vakue = finalFaht1.StillConvertingFahrenheitToCelsius;
+                    double StandardFaht1Vakue = finalFaht1.ConvertingFahrenheitToCelsius;
+                    
+                    double faht1Result = finalFaht1.FahrenheitConverterMethod();
+
+                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine($"Your result is {faht1Result}K");
+                    Console.WriteLine("--------------------------------");
+
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Yay, your temperature value has been converted from fahrenheit to celsius");
+                    Console.WriteLine("What's next?");
+                    Console.WriteLine("Would you like to convert a (new) fahrenheit temperature");
+                    Console.WriteLine();
+                    Console.WriteLine("Please Enter 'new' to convert a new fahrenheit temperature, enter 'get to get all fahrenheit temperatures you've converted. To exit, enter 'X'");
+                    string userContinue3 = Console.ReadLine().ToUpper();
+
+                     switch (userContinue3)
+                    {
+                        case "NEW":
+                            Main();
+                            break;
+
+                        case "GET":
+                            // GetAllConvertedFahrenheits();
+                            break;
+                        case "X":
+                            Console.WriteLine("Goodbye My dear User");
+                            break;
+
+
+                        default:
+                            Console.WriteLine("Sorry, I didn't get that; Lets try again");
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Main();
+                            break;
+                    }
+
+                }
+
+
+
+
+
+
+            }
+
+
+        }
+        // for celsius to fahrenheit
+        else if (userStarts == "CF")
         {
 
         }
-        else if (userStarts == "K")
+        // for kelvin to celsius
+        else if (userStarts == "KC")
         {
             Console.WriteLine("You selected the option for a conversion of Kelvin to Celsius");
             Console.WriteLine("We'll help you convert a Kelvin Temperature into a celsius one");
@@ -192,9 +319,10 @@ class Program
 
         }
 
-        else if (userStarts == "C")
+        // for celsius to kelvin
+        else if (userStarts == "CK")
         {
-            Console.WriteLine("You selected the option for a conversion of Celsius TO Kelvin");
+            Console.WriteLine("You selected the option for a conversion of Celsius To Kelvin");
             Console.WriteLine("We'll help you convert a Kelvin Temperature into a celsius one");
             Console.WriteLine();
             Console.WriteLine();
@@ -211,15 +339,15 @@ class Program
 
             // running a method to confirm or edit the value my user enterred for kelvin
 
-            ConfirmOrEditCelsius(cel);
+            ConfirmOrEditSecondCelsius(cel);
 
-            static void ConfirmOrEditCelsius(CelsiusToKelvin confirmCel)
+            static void ConfirmOrEditSecondCelsius(CelsiusToKelvin confirmCel)
             {
                 Console.WriteLine("Please confirm that you enterred the correct value for celsius");
 
-                // here is where I used my getter to get user information on their kelvin value
-                // so they can choose to use my setter to set information on their kelvin value or not
-                Console.WriteLine($"You enterred {confirmCel.StillConvertingCelsiusToKelvin} for the kelvin value");
+                // here is where I used my getter to get user information on their celsius value
+                // so they can choose to use my setter to set information on their celsius value or not
+                Console.WriteLine($"You enterred {confirmCel.StillConvertingCelsiusToKelvin} for the celsius value");
                 Console.WriteLine();
                 Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
                 string userSecondAns = Console.ReadLine().ToUpper();
@@ -242,7 +370,7 @@ class Program
                         confirmCel.StillConvertingCelsiusToKelvin = newKelvinStandard;
 
 
-                        ConfirmOrEditCelsius(confirmCel);
+                        ConfirmOrEditSecondCelsius(confirmCel);
 
                         break;
 
@@ -269,7 +397,7 @@ class Program
 
                     Console.WriteLine();
                     Console.WriteLine();
-                    Console.WriteLine("Yay, your temperature value has been changed from celsius to Kelvin");
+                    Console.WriteLine("Yay, your temperature value has been converted from celsius to Kelvin");
                     Console.WriteLine("What's next?");
                     Console.WriteLine("Would you like to convert a (new) celsius temperature");
                     Console.WriteLine();
@@ -308,8 +436,22 @@ class Program
 
         }
 
+        // for kelvin to fahrenheit
+        else if (userStarts == "KF")
+        {
+
+        }
+        // for fahrenheit to kelvin
+        else if (userStarts == "FK")
+        {
+
+        }
+
+        // the else branch if user inputs 
         else
         {
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("I am sorry, I didn't get that; Please try again");
             Main();
         }
