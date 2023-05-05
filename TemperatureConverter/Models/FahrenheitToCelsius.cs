@@ -40,7 +40,7 @@ namespace TemperatureConverter.Models
             double realConversion = (ConvertingFahrenheitToCelsius -32)* 1.8;
 
 
-            if ((StillConvertingFahrenheitToCelsius < 0)))
+            if ((StillConvertingFahrenheitToCelsius < 0))
             {
                 throw new ArgumentException("Invalid temperature in kelvin");
             }
