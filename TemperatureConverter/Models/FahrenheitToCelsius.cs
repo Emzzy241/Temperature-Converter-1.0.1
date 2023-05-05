@@ -13,7 +13,7 @@ namespace TemperatureConverter.Models
     public class FahrenheitToCelsius
     {
         public double StillConvertingFahrenheitToCelsius { get; set; }
-        public double ConvertingfahrenheitToCelsius { get; set; }
+        public double ConvertingFahrenheitToCelsius { get; set; }
 
         private static List<FahrenheitToCelsius> _thirdInstances = new List<FahrenheitToCelsius>();
 
@@ -28,25 +28,24 @@ namespace TemperatureConverter.Models
         public FahrenheitToCelsius(double fahrenheitTemperature, double standardOfFahrenheitoCelsius)
         {
             StillConvertingFahrenheitToCelsius = fahrenheitTemperature;
-            ConvertingfahrenheitToCelsius = standardOfFahrenheitoCelsius;
+            ConvertingFahrenheitToCelsius = standardOfFahrenheitoCelsius;
             _thirdInstances.Add(this);
         }
 
         public double FahrenheitConverterMethod()
         {
+            
 
-            // double realConversion = (ConvertingfahrenheitToCelsius * 1.8) +32;
+            // how a Fahrenheit Temperature is converted into a celsius on
+            double realConversion = (ConvertingFahrenheitToCelsius -32)* 1.8;
 
 
-            double realConversion = (ConvertingfahrenheitToCelsius -32)* 1.8;
-
-
-            if ((StillConvertingFahrenheitToCelsius < 0))
+            if ((StillConvertingFahrenheitToCelsius < 0)))
             {
                 throw new ArgumentException("Invalid temperature in kelvin");
             }
             else{
-                double finalFahrenheitValue = realConversion;
+                double finalFahrenheitValue = StillConvertingFahrenheitToCelsius + realConversion;
                 return finalFahrenheitValue;
             }
         }
