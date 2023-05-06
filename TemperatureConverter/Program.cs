@@ -166,14 +166,14 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Please enter in the celsius value");
 
-            string celsius2Value = Console.ReadLine();
+            string firstCelsius = Console.ReadLine();
 
-            int celsius2ValueInt = int.Parse(celsius2Value);
+            int firstCelsiusInt = int.Parse(firstCelsius);
 
 
             double fahrenheitStandard = 32;
 
-            CelsiusToFahrenheit cel1 = new CelsiusToFahrenheit(celsius2ValueInt, fahrenheitStandard);
+            CelsiusToFahrenheit cel1 = new CelsiusToFahrenheit(firstCelsiusInt, fahrenheitStandard);
 
              ConfirmOrEditSecondFahrenheit(cel1);
 
@@ -201,9 +201,9 @@ class Program
                         string newFaht1Value = Console.ReadLine();
                         double newFaht1ValueInt = double.Parse(newFaht1Value);
 
-                        double newKFahreheitStandard = 32;
+                        double newCelsiusStandard = 32;
                         confirmCel2.ConvertingCelsiusToFahrenheit = newFaht1ValueInt;
-                        confirmCel2.StillConvertingCelsiusToFahrenheit = newKFahreheitStandard;
+                        confirmCel2.StillConvertingCelsiusToFahrenheit = newCelsiusStandard;
 
 
                         ConfirmOrEditSecondFahrenheit(confirmCel2);
@@ -551,6 +551,35 @@ class Program
         // for kelvin to fahrenheit
         else if (userStarts == "KF")
         {
+            
+            Console.WriteLine("You selected the option for a conversion of Kelvin To Fahrenheit");
+            Console.WriteLine("We'll help you convert a kelvin Temperature into a fahrenheit one");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Please enter in the kelvin value");
+
+            string secondKelvinValue = Console.ReadLine();
+
+            int secondKelvinValueInt = int.Parse(secondKelvinValue);
+
+            Console.WriteLine(secondKelvinValueInt);
+
+            double secondKelvinStandard = 32;
+
+            KelvinToFahrenheit myKel = new KelvinToFahrenheit(secondKelvinValueInt, secondKelvinStandard);
+
+             ConfirmOrEditSecondKelvin(myKel);
+
+               static void ConfirmOrEditSecondKelvin(KelvinToFahrenheit confirmKel2)
+            {
+                Console.WriteLine("Please confirm that you enterred the correct value for kelvin");
+
+                Console.WriteLine($"You enterred '{confirmKel2.StillConvertingKelvinToFahrenheit}' for the kelvin value");
+                Console.WriteLine();
+                Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
+                string userThirdAns = Console.ReadLine().ToUpper();
+            }
+
 
         }
         // for fahrenheit to kelvin
