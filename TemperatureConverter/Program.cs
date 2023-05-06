@@ -106,7 +106,7 @@ class Program
                 {
                     double userFaht1Vakue = finalFaht1.ConvertingFahrenheitToCelsius;
                     double StandardFaht1Vakue = finalFaht1.StillConvertingFahrenheitToCelsius;
-                    
+
                     double faht1Result = finalFaht1.FahrenheitConverterMethod();
 
                     Console.WriteLine("--------------------------------");
@@ -122,7 +122,7 @@ class Program
                     Console.WriteLine("Please Enter 'new' to convert a new fahrenheit temperature, enter 'get to get all fahrenheit temperatures you've converted. To exit, enter 'X'");
                     string userContinue3 = Console.ReadLine().ToUpper();
 
-                     switch (userContinue3)
+                    switch (userContinue3)
                     {
                         case "NEW":
                             Main();
@@ -175,7 +175,7 @@ class Program
 
             CelsiusToFahrenheit cel1 = new CelsiusToFahrenheit(firstCelsiusInt, fahrenheitStandard);
 
-             ConfirmOrEditSecondFahrenheit(cel1);
+            ConfirmOrEditSecondFahrenheit(cel1);
 
             // code for method to confirm or edit fahrenheit value supplied by user.
 
@@ -224,7 +224,7 @@ class Program
                 {
                     double userFaht1Vakue = finalCel1.ConvertingCelsiusToFahrenheit;
                     double StandardFaht1Vakue = finalCel1.StillConvertingCelsiusToFahrenheit;
-                    
+
                     double cel1Result = finalCel1.SecondFahrenheitConverterMethod();
 
                     Console.WriteLine("--------------------------------");
@@ -240,7 +240,7 @@ class Program
                     Console.WriteLine("Please Enter 'new' to convert a new fahrenheit temperature, enter 'get to get all fahrenheit temperatures you've converted. To exit, enter 'X'");
                     string userContinue2 = Console.ReadLine().ToUpper();
 
-                     switch (userContinue2)
+                    switch (userContinue2)
                     {
                         case "NEW":
                             Main();
@@ -551,7 +551,7 @@ class Program
         // for kelvin to fahrenheit
         else if (userStarts == "KF")
         {
-            
+
             Console.WriteLine("You selected the option for a conversion of Kelvin To Fahrenheit");
             Console.WriteLine("We'll help you convert a kelvin Temperature into a fahrenheit one");
             Console.WriteLine();
@@ -568,9 +568,9 @@ class Program
 
             KelvinToFahrenheit myKel = new KelvinToFahrenheit(secondKelvinValueInt, secondKelvinStandard);
 
-             ConfirmOrEditSecondKelvin(myKel);
+            ConfirmOrEditSecondKelvin(myKel);
 
-               static void ConfirmOrEditSecondKelvin(KelvinToFahrenheit confirmKel2)
+            static void ConfirmOrEditSecondKelvin(KelvinToFahrenheit confirmKel2)
             {
                 Console.WriteLine("Please confirm that you enterred the correct value for kelvin");
 
