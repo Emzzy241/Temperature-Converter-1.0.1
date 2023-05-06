@@ -51,7 +51,7 @@ class Program
 
             Console.WriteLine(fahrenheitValueInt);
 
-            double celsiusStandard = 273.15;
+            double celsiusStandard = 32;
 
             FahrenheitToCelsius faht = new FahrenheitToCelsius(fahrenheitValueInt, celsiusStandard);
 
@@ -65,7 +65,7 @@ class Program
             {
                 Console.WriteLine("Please confirm that you enterred the correct value for Fahrenheit");
 
-                Console.WriteLine($"You enterred $'{confirmFaht1.StillConvertingFahrenheitToCelsius}' for the fahrenheit value");
+                Console.WriteLine($"You enterred '{confirmFaht1.StillConvertingFahrenheitToCelsius}' for the fahrenheit value");
                 Console.WriteLine();
                 Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
                 string userThirdAns = Console.ReadLine().ToUpper();
@@ -100,17 +100,17 @@ class Program
                 }
 
                 // the UI that works with the Fahrenheit to celsius method.
-                // method has already been written in its own business logic file[p]
+                // method has already been written in its own business logic file, nowits time for the UI logic to handle the business logic code
 
                 static void ConvertFahrenheitToCelsius(FahrenheitToCelsius finalFaht1)
                 {
-                    double userFaht1Vakue = finalFaht1.StillConvertingFahrenheitToCelsius;
-                    double StandardFaht1Vakue = finalFaht1.ConvertingFahrenheitToCelsius;
+                    double userFaht1Vakue = finalFaht1.ConvertingFahrenheitToCelsius;
+                    double StandardFaht1Vakue = finalFaht1.StillConvertingFahrenheitToCelsius;
                     
                     double faht1Result = finalFaht1.FahrenheitConverterMethod();
 
                     Console.WriteLine("--------------------------------");
-                    Console.WriteLine($"Your result is {faht1Result}K");
+                    Console.WriteLine($"Your result is {faht1Result}C");
                     Console.WriteLine("--------------------------------");
 
                     Console.WriteLine();
@@ -159,6 +159,118 @@ class Program
         // for celsius to fahrenheit
         else if (userStarts == "CF")
         {
+
+            Console.WriteLine("You selected the option for a conversion of Celsius to Fahrenheit");
+            Console.WriteLine("We'll help you convert a celsius Temperature into a fahrenheit one");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Please enter in the celsius value");
+
+            string celsius2Value = Console.ReadLine();
+
+            int celsius2ValueInt = int.Parse(celsius2Value);
+
+
+            double fahrenheitStandard = 32;
+
+            CelsiusToFahrenheit cel1 = new CelsiusToFahrenheit(celsius2ValueInt, fahrenheitStandard);
+
+             ConfirmOrEditSecondFahrenheit(cel1);
+
+            // code for method to confirm or edit fahrenheit value supplied by user.
+
+            static void ConfirmOrEditSecondFahrenheit(CelsiusToFahrenheit confirmCel2)
+            {
+                Console.WriteLine("Please confirm that you enterred the correct value for Fahrenheit");
+
+                Console.WriteLine($"You enterred '{confirmCel2.StillConvertingCelsiusToFahrenheit}' for the fahrenheit value");
+                Console.WriteLine();
+                Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
+                string userThirdAns = Console.ReadLine().ToUpper();
+
+                // using a switch-case here
+                switch (userThirdAns)
+                {
+                    case "YES":
+                        Console.WriteLine("Great, Lets move on");
+                        ConvertCelsiusToFahrenheit(confirmCel2);
+                        break;
+                    case "NO":
+                        Console.WriteLine("Lets fix up your fahrenheit value");
+                        Console.WriteLine("Enter a new value for your fahrenheit temperature");
+                        string newFaht1Value = Console.ReadLine();
+                        double newFaht1ValueInt = double.Parse(newFaht1Value);
+
+                        double newKFahreheitStandard = 32;
+                        confirmCel2.ConvertingCelsiusToFahrenheit = newFaht1ValueInt;
+                        confirmCel2.StillConvertingCelsiusToFahrenheit = newKFahreheitStandard;
+
+
+                        ConfirmOrEditSecondFahrenheit(confirmCel2);
+
+                        break;
+
+                    default:
+                        Console.WriteLine("Sorry I didnt get that");
+                        Main();
+                        break;
+
+                }
+
+                // the UI that works with the Fahrenheit to celsius method.
+                // method has already been written in its own business logic file, nowits time for the UI logic to handle the business logic code
+
+                static void ConvertCelsiusToFahrenheit(CelsiusToFahrenheit finalCel1)
+                {
+                    double userFaht1Vakue = finalCel1.ConvertingCelsiusToFahrenheit;
+                    double StandardFaht1Vakue = finalCel1.StillConvertingCelsiusToFahrenheit;
+                    
+                    double cel1Result = finalCel1.SecondFahrenheitConverterMethod();
+
+                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine($"Your result is {cel1Result}C");
+                    Console.WriteLine("--------------------------------");
+
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Yay, your temperature value has been converted from fahrenheit to celsius");
+                    Console.WriteLine("What's next?");
+                    Console.WriteLine("Would you like to convert a (new) fahrenheit temperature");
+                    Console.WriteLine();
+                    Console.WriteLine("Please Enter 'new' to convert a new fahrenheit temperature, enter 'get to get all fahrenheit temperatures you've converted. To exit, enter 'X'");
+                    string userContinue2 = Console.ReadLine().ToUpper();
+
+                     switch (userContinue2)
+                    {
+                        case "NEW":
+                            Main();
+                            break;
+
+                        case "GET":
+                            // GetAllConvertedFahrenheits();
+                            break;
+                        case "X":
+                            Console.WriteLine("Goodbye My dear User");
+                            break;
+
+
+                        default:
+                            Console.WriteLine("Sorry, I didn't get that; Lets try again");
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Main();
+                            break;
+                    }
+
+                }
+
+
+
+
+
+
+            }
 
         }
         // for kelvin to celsius
