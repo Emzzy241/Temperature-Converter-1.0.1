@@ -38,6 +38,7 @@ namespace TemperatureConverter.Models
 
         public double FahrenheitConverterMethod()
         {
+            // how a fahrenheit Temperature is converted into a kelvin one
             double conversionStandard = ConvertingfahrenheitToKelvin - 32 * 0.56 + 273.15;
 
             if (StillConvertingFahrenheitToKelvin < 0)
