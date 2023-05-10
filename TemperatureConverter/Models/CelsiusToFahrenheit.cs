@@ -9,11 +9,11 @@ namespace TemperatureConverter.Models
         public double StillConvertingCelsiusToFahrenheit{ get; set; }
         public double ConvertingCelsiusToFahrenheit{ get; set; }
 
-        public List<CelsiusToFahrenheit> _fourthInstance;
+        private static List<CelsiusToFahrenheit> _fourthInstance;
         public List<CelsiusToFahrenheit> ForMyListOfCelsiusToFahreheitTemperatures
         {
-            get {return _fourthInstance; }
-            set {_fourthInstance = value; }
+            get { return _fourthInstance; }
+            set { _fourthInstance = value; }
         }
 
         public CelsiusToFahrenheit(double mySecondFahrenheitTemp, double standardOfFahrenheitTemp)
@@ -25,14 +25,14 @@ namespace TemperatureConverter.Models
 
         public double SecondFahrenheitConverterMethod()
         {
-            // how a temperature in Celsius is converted to one in Fahrenhe
-            double realConversion = (ConvertingCelsiusToFahrenheit * 1.8) +32;
+            // how a temperature in Celsius is converted to one in Fahrenheit
+
             if(StillConvertingCelsiusToFahrenheit < 0)
             {
                 throw new ArgumentException("Invalid temperature value");
             }
             else{
-                double finalCelsiusToFahrenheitTemperature = realConversion;
+                double finalCelsiusToFahrenheitTemperature = (StillConvertingCelsiusToFahrenheit * 1.8) +32;
                 return finalCelsiusToFahrenheitTemperature;
             }
         }
