@@ -574,11 +574,13 @@ class Program
             {
                 Console.WriteLine("Please confirm that you enterred the correct value for kelvin");
 
-                Console.WriteLine($"You enterred '{confirmKel2.StillConvertingKelvinToFahrenheit}' for the kelvin value");
+                Console.WriteLine($"You enterred '{confirmKel2.ConvertingFKelvinToFahrenheit}' for the kelvin value");
                 Console.WriteLine();
                 Console.WriteLine("Is that correct, enter 'yes' to continue or 'no' to change that value");
                 string userThirdAns = Console.ReadLine().ToUpper();
             }
+
+            // Moving on from the bug now, now its time to ask users would like to get their result 
 
 
         }
