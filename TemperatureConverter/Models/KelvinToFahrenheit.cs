@@ -34,6 +34,7 @@ namespace TemperatureConverter.Models
                 double finalKelvinToFahrenheitTemperature = trueConversion;
                 return finalKelvinToFahrenheitTemperature;
             }
+            // I have successfully been able to handle the business logic, now its time for UI logic
         }
 
     }
